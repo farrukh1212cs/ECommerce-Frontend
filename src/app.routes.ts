@@ -4,6 +4,7 @@ import { Dashboard } from './app/pages/dashboard/dashboard';
 import { Documentation } from './app/pages/documentation/documentation';
 import { Landing } from './app/pages/landing/landing';
 import { Notfound } from './app/pages/notfound/notfound';
+import { AuthGuardService } from './app/services/authguard/auth-guard.service';
 
 export const appRoutes: Routes = [
     {
@@ -17,13 +18,23 @@ export const appRoutes: Routes = [
     {
         path: 'dashboard',
         component: AppLayout,
+        canActivate: [AuthGuardService],
         children: [
             { path: '', component: Dashboard }
         ]
     },
     {
+        path: 'products',
+        component: AppLayout,
+        canActivate: [AuthGuardService],
+        children: [
+            { path: '', loadChildren: () => import('./app/features/products/products.routes') }
+        ]
+    },
+    {
         path: 'uikit',
         component: AppLayout,
+        canActivate: [AuthGuardService],
         children: [
             { path: '', loadChildren: () => import('./app/pages/uikit/uikit.routes') }
         ]
@@ -31,6 +42,7 @@ export const appRoutes: Routes = [
     {
         path: 'pages',
         component: AppLayout,
+        canActivate: [AuthGuardService],
         children: [
             { path: '', loadChildren: () => import('./app/pages/pages.routes') }
         ]
@@ -38,6 +50,7 @@ export const appRoutes: Routes = [
     {
         path: 'documentation',
         component: AppLayout,
+        canActivate: [AuthGuardService],
         children: [
             { path: '', component: Documentation }
         ]
