@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  // Set your API base URL here, e.g. 'https://api.example.com'
-  baseUrl: 'https://localhost:7104/api'
+  // API requests use relative path - nginx will proxy them
+  baseUrl: 'http://localhost:7104/api'
 };

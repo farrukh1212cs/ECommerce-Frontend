@@ -1,0 +1,15 @@
+node_modules
+dist
+.git
+.gitignore
+Dockerfile
+docker-compose*.yml
+docker-compose*.yaml
+README.md
+*.log
+.vscode
+.idea
+coverage
+tmp
+out-tsc
+# keep source files included so the build can run
